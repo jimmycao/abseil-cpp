@@ -1,0 +1,9 @@
+thread_num: 10
+
+is_decay: True
+decay_factor: 0.999
+
+steps: [1, 5, 9]
+
+hdfs_uri: "hdfs://hostname:54310"
+hdfs_ugi: "user,passwd"

@@ -1,0 +1,35 @@
+#edit-mode: -*- python -*-
+#coding:utf-8
+
+WORKROOT('../../../../../')
+
+ImportFlagsFrom('../../')
+ImportConfigsFrom('../../')
+
+TEST_EXEC=[
+    'archive_base_test', 
+    'archive_binary_test', 
+    'archive_text_test',
+    'channel_test', 
+    'config_test', 
+    'factory_test',
+    'fs_local_test',
+    'hash_test',
+    'line_reader_test',
+    'random_test', 
+    'scope_exit_test', 
+    'sem_test', 
+    'shell_test', 
+    'string_tools_test',
+    'thread_barrier_test',
+    'thread_group_async_channel_test',
+    'thread_group_async_condition_test',
+    'thread_group_test',
+    'thread_managed_test',
+    'time_related_test']
+
+for item in TEST_EXEC:
+    Application("common_test/%s"%item, 
+                Sources(GLOB(item+'.cpp'), IncludePaths('../ ../ $INC')),
+                ENV.LinkFlags(), 
+                Libraries('$OUT/lib/libmn_common.a '))

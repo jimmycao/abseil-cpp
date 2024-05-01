@@ -1,0 +1,27 @@
+#edit-mode: -*- python -*-
+#coding:utf-8
+
+WORKROOT('../../../../')
+
+ImportFlagsFrom('..')
+ImportConfigsFrom('..')
+
+CONFIGS('baidu/third-party/gflags@gflags_V1.6.0.1_GCC820_6U3_K3_GEN_PD_BL@git_tag')
+CONFIGS("baidu/third-party/glog@glog_V0.4.0.1_GCC820_6U3_K3_GEN_PD_BL@git_tag")
+CONFIGS("baidu/third-party/boost@boost_V1.63.0.200324_GCC820_4U3_K2_GEN_PD_BL@git_tag")
+#CONFIGS("baidu/third-party/yaml-cpp@yaml-cpp_V0.5.2.2_GCC820_4U3_K3_GEN_PD_BL@git_tag")
+CONFIGS("baidu/third-party/openssl@openssl_V1.0.1.2_GCC820_4U3_K3_GEN_PD_BL@git_tag")
+CONFIGS("baidu/third-party/yaml-cpp@yaml-cpp_V0.5.2.3_GCC820_4U3_K3_GEN_PD_BL@git_tag")
+CONFIGS('baidu/base/configure@stable')
+CONFIGS('baidu/base/common@stable')
+CONFIGS('baidu/base/dict@stable')
+CONFIGS('baidu/base/base64@stable')
+
+HEADERS('./*.h ', '$INC/common')
+include_paths = ' . ../ $INC/ '
+StaticLibrary('mn_common', 
+              Sources(GLOB("./*.cpp"),
+                      IncludePaths(include_paths)), 
+              ENV.LinkFlags())
+
+Directory('test')
